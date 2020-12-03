@@ -1,38 +1,128 @@
-.App {
-  text-align: center;
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Signika', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* **************NAVBAR***************** */
+
+.navbar{
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65px;
+  padding: 0px 2.5%;
+  z-index: 10;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+.logo_div{
+  order: 2;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logo_div img{
+  width: 100px;
+  height: 32.5px;
+  margin-top: 2.5px;
+  cursor: pointer;
+}
+
+.menu_div{
+  position: fixed;
+  top: 65px;
+  left: -100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: black;
+  width: 100vw;
+  height: calc(100vh - 65px);
+  padding: 20px 10px;
+  opacity: 0;
+  transition: left .5s ease, opacity .5s ease;
+  z-index: 10;
+}
+
+.menu_div.active{
+  left: 0px;
+  opacity: 1;
+}
+
+.menu_div a{
+  display: block;
   color: white;
+  text-align: center;
+  margin: 30px 10px;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 25px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+@media (hover: hover) and (pointer: fine) {
+  .menu_div a:hover{
+    color: rgb(2, 160, 2);
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hamburger_div{
+  width: 110px;
+  display: flex;
+  align-items: center;
+}
+
+.hamburger_div img{
+  order: 1;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.bag_div{
+  order: 3;
+  width: 110px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+}
+
+.bag_div div{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bag_div img{
+  width: 25px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.bag_total{
+  position: absolute;
+  top: 0px;
+  right: 7.5px;
+  background: rgb(31, 122, 241);
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
