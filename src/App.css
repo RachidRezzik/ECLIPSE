@@ -18,11 +18,10 @@
   justify-content: center;
   height: 65px;
   padding: 0px 2.5%;
-  z-index: 10;
+  z-index: 100;
   border-bottom: 1px solid lightgrey;
+  background: white;
 }
-
-
 
 .logo_div{
   order: 2;
@@ -39,119 +38,6 @@
   height: 32.5px;
   margin-top: 2.5px;
   cursor: pointer;
-}
-
-.menu_div, .subMenu{
-  position: fixed;
-  top: 65px;
-  left: -100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: calc(100vh - 65px);
-  padding: 20px 10px;
-  opacity: 0;
-  transition: left .5s ease, opacity .75s ease;
-  z-index: 10;
-  overflow: hidden;
-}
-
-.menu_div.active{
-  left: 0px;
-  opacity: 1;
-  z-index: 10;
-}
-
-.subMenu{
-  right: -100%;
-  left: unset;
-  transition: right .5s ease, opacity .75s ease;
-
-}
-
-.subMenu.active{
-  right: 0px;
-  background: white;
-  color: black;
-  top: 65px;
-  z-index: 30;
-  opacity: 1;
-}
-
-.subMenu_links{
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.subMenu span{
-  cursor: pointer;
-  margin: 50% 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 20px;
-}
-
-.subMenu_title_div{
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  width: 100%;
-  background: white;
-  height: 55px;
-  z-index: 50;
-}
-
-.subMenu_title_div p{
-  position: absolute;
-  left: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17.5px;
-  cursor: pointer;
-}
-
-.subMenu_title_div img{
-  width: 12px;
-  height: 10px;
-  transform: rotateY(180deg);
-  margin: 0px 7.5px;
-  margin-left: 2.5vw;
-  margin-bottom: 2px;
-}
-
-.subMenu_links h2{
-  margin: 30px;
-  margin-bottom: 20px;
-}
-
-
-.menu_div span{
-  cursor: pointer;
-  padding: 10% 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 20px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.menu_div span img{
-  position: absolute;
-  width: 10.5px;
-  height: 12.5px;
-  right: 17.5px;
 }
 
 .hamburger_div{
@@ -189,6 +75,11 @@
   cursor: pointer;
 }
 
+#search{
+  width: 22.5px;
+  height: 25px;
+}
+
 .bag_total{
   position: absolute;
   top: -3px;
@@ -203,8 +94,393 @@
   cursor: pointer;
 }
 
+.search_container{
+  position: fixed;
+  right: -100%;
+  top: 65px;
+  height: calc(100vh - 65px);
+  width: 100vw;
+  transition: right .55s ease-in-out;
+  background: lightgrey;
+  text-align: center;
+}
 
-.subMenu{
+.search_container.active{
+  right: 0px;
+}
+
+.search_container input{
+  width: 80%;
+  margin: 10px auto;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  text-indent: 15px;
+  font-size: 17.5px;
+}
+
+.cart_container{
+  position: fixed;
+  right: -100%;
+  top: 65px;
+  height: calc(100vh - 65px);
+  width: 100vw;
+  transition: right .55s ease-in-out;
+  background: lightgrey;
+  text-align: center;
+}
+
+.cart_container.active{
+  right: 0px;
+}
+
+
+.menu_slider{
+  position: absolute;
+  top: 65px;
+  left: -100%;
+  height: calc(100vh - 65px);
+  width: 100%;
+  background: lightgray;
+  display: flex;
+  flex-direction: row;
+  transition: left .55s ease-in-out;
+}
+
+.menu_slider.active{
+  left: 0px;
+}
+
+.slider_container{
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+}
+
+.first_menu, .second_menu{
+  background: white;
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all .55s ease-in-out;
+}
+
+.first_menu button{
+  position: relative;
+  width: 100%;
+  background: white;
+  text-align: left;
+  font-size: 30px;
+  margin-top: 60px;
+  padding: 10px 0px;
+  padding-left: 40px;
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.first_menu button img{
+  position: absolute;
+  width: 12.5px;
+  height: 12.5px;
+  right: 35px;
+}
+
+.second_menu div{
+  width: 100%;
+  height: 100%;
+}
+
+.second_menu .subMenu_links{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.second_menu .subMenu_links button{
+  display: flex;
+  align-items: center;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bolder;
+  padding-left: 40px;
+}
+
+.second_menu .subMenu_links img{
+  width: 10px;
+  transform: rotateY(180deg);
+  margin-left: 35px;
+  margin-right: 30px;
+  width: 12.5px;
+  height: 12.5px;
+}
+
+.second_menu .subMenu_links button, .second_menu .subMenu_links a{
+  width: 100%;
+  text-align: left;
+  font-size: 30px;
+  margin-top: 60px;
+  padding: 10px 0px;
+  text-decoration: none;
+  color: black;
+  background: white;
+  text-transform: uppercase;
+}
+
+.second_menu .subMenu_links a{
+  padding-left: 80px;
+}
+
+@media screen and (min-width: 650px){
+  .hamburger_div{
+    display: none;
+    order: -1;
+  }
+  
+  .logo_div{
+    order: 1;
+    width: 100px;
+    margin-right: unset;
+    margin-left: unset;
+  }
+  
+  .desktop_menu{
+    order: 2;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .dropdown1, .dropdown2, .dropdown3, .dropdown4{
+    height: 100%;
+    padding: 0px 10px;
+    cursor: pointer;
+  }
+  
+  .desktop_menu div button{
+    border: none;
+    outline: none;
+    font-size: 17.5px;
+    height: 100%;
+    cursor: pointer;
+    padding: 2px 2.5px;
+    background: white;
+  }
+
+  .submenu1, .submenu2, .submenu3, .submenu4{
+    display: none;
+  }
+  
+  .dropdown1:hover .submenu1, .dropdown2:hover .submenu2, .dropdown3:hover .submenu3, .dropdown4:hover .submenu4{
+    position: fixed;
+    display: flex;
+    top: 64px;
+    left: 0px;
+    width: 100vw;
+    height: 65px;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    padding: 0px 2.5%;
+  }
+
+  .dropdown1:hover, .dropdown2:hover, .dropdown3:hover, .dropdown4:hover{
+    border-bottom: 3.5px solid black;
+    border-top: 3.5px solid white;
+  }
+
+  .desktop_menu div div a{
+    margin: 0px 10%;
+    text-decoration: none;
+    padding: 5px;
+  }
+
+  .desktop_menu div div a:hover{
+    text-decoration: underline;
+  }
+  
+
+  .search_container{
+    position: fixed;
+    right: 0px;
+    top: 65px;
+    height: 400px;
+    width: 40vw;
+    max-width: 600px;
+    transition: opacity .55s ease-in-out;
+    background: rgb(235, 234, 234);
+    text-align: center;
+    opacity: 0;
+    border-radius: 0px 0px 0px 5px;
+    box-shadow: 2px 2px 3px rgb(199, 197, 197), -1px 1px 3px rgb(199, 197, 197);
+    z-index: 10;
+  }
+  
+  .search_container.active{
+    opacity: 1;
+  }
+}
+
+/* ****************FOOTER******************* */
+.footer{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 5%;
+  background: black;
+  color: white;
+}
+
+.footer h3{
+  width: 90%;
+}
+
+.footer p{
+  margin: 10px auto;
+  margin-bottom: 0px;
 
 }
 
+.newsletter{
+  margin: 10px auto;
+}
+
+.newsletter input{
+  height: 25px;
+  border: none;
+  outline: none;
+  text-indent: 10px;
+}
+
+#email_submit{
+  background: rgb(7, 97, 233);
+  color: white;
+  border: none;
+  outline: none;
+  padding: 0px 5px;
+  text-indent: 0px;
+}
+
+.footer img{
+  width: 110px;
+  height: 25px;
+  margin-top: 20px;
+}
+
+/* ****************HOME********************* */
+
+.Home_Section{
+  margin-top: 65px;
+  height: 65vh;
+}
+
+.diagonalHover {
+  margin-top: 65px;
+  position: absolute;
+  width: 66%;
+  height: 65vh;
+  z-index: -10;
+}
+.diagonalHover.first,
+.diagonalHover.second {
+  background-image: url(./images/home_men.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.diagonalHover.second {
+  background-image: url(./images/home_women.jpg);
+}
+
+.diagonalHover.first {
+  left: 0;
+  top: 0;
+  -webkit-clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0%, 50% 100%, 0% 100%);
+}
+
+.diagonalHover.second {
+  right: 0;
+  top: 0;
+  -webkit-clip-path: polygon(50% 0, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(50% 0, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.sale_container{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(./images/coupon_background.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px auto;
+}
+
+.sale_flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+  margin: 80px auto;
+  margin-top: 30px;
+}
+
+.sale_container h1{
+  color: white;
+  font-size: 60px;
+  text-align: center;
+  padding-top: 80px;
+  text-shadow: 1px 1px 5px black;
+}
+
+.sale_item{
+  background: black;
+  color: white;
+  height: 200px;
+  margin: 20px;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sale_item button{
+  background: rgb(6, 214, 6);
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px auto;
+  margin-bottom: 0px;
+}
