@@ -5,9 +5,7 @@ import React, {useState} from 'react'
 import Navigation from './components/Navigation'
 import Home from './components/Home'
 import Footer from './components/Footer'
-import menSHORTS from './components/MEN/menSHORTS';
-import menSHIRTS from './components/MEN/menSHIRTS';
-import menJOGGERS from './components/MEN/menJOGGERS';
+import Men from './components/Men';
 import boysSHIRTS from './components/BOYS/boysSHIRTS';
 import boysSHORTS from './components/BOYS/boysSHORTS';
 import boysJOGGERS from './components/BOYS/boysJOGGERS';
@@ -29,9 +27,7 @@ function App() {
       <Navigation />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/MEN/SHIRTS" component={menSHIRTS} />
-        <Route exact path="/MEN/SHORTS" component={menSHORTS} />
-        <Route exact path="/MEN/JOGGERS" component={menJOGGERS} />
+        <Route exact path="/MEN" component={Men} />
         <Route exact path="/BOYS/SHIRTS" component={boysSHIRTS} />
         <Route exact path="/BOYS/SHORTS" component={boysSHORTS} />
         <Route exact path="/BOYS/JOGGERS" component={boysJOGGERS} />

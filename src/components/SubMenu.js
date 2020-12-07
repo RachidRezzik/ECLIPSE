@@ -15,9 +15,9 @@ export default function SubMenu(props) {
         menu_content = 
         <div className="subMenu_links">
             <button onClick={handleBackClick}><img src={arrow} alt="" />MEN</button>
-            <Link to="/Men/Shirts">Shirts</Link>
-            <Link to="/Men/Shorts">Shorts</Link>
-            <Link to="/Men/Joggers">Joggers</Link>
+            <Link to="/Men/#Shirts">Shirts</Link>
+            <Link to="/Men/#Shorts">Shorts</Link>
+            <Link to="/Men/#Joggers">Joggers</Link>
         </div>
     } else if (props.menuItemSelected === "Women") {
         menu_title = "Women"

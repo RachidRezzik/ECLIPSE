@@ -122,7 +122,7 @@
 
 .cart_container{
   position: fixed;
-  right: -100%;
+  right: -110%;
   top: 65px;
   height: calc(100vh - 65px);
   width: 100vw;
@@ -310,6 +310,7 @@
     margin: 0px 10%;
     text-decoration: none;
     padding: 5px;
+    color: rgb(32, 148, 243);
   }
 
   .desktop_menu div div a:hover{
@@ -426,7 +427,7 @@
 }
 
 .sale_container{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(./images/coupon_background.jpg);
+  background-image: url(./images/coupon_background.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -439,14 +440,22 @@
   padding: 100px auto;
 }
 
+.sale_background{
+  background: red;
+  width: 80%;
+  margin: 100px auto;
+  border-radius: 5px;
+  box-shadow: 2px 2px 15px rgb(59, 59, 59);
+}
+
 .sale_flex{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 80%;
-  margin: 80px auto;
+  width: 100%;
+  margin: 20px auto;
   margin-top: 30px;
 }
 
@@ -454,8 +463,8 @@
   color: white;
   font-size: 60px;
   text-align: center;
-  padding-top: 80px;
-  text-shadow: 1px 1px 5px black;
+  padding-top: 20px;
+  text-shadow: 1px 1px 10px black;
 }
 
 .sale_item{
@@ -464,7 +473,7 @@
   height: 200px;
   margin: 20px;
   width: 100%;
-  max-width: 450px;
+  max-width: 400px;
   border-radius: 5px;
   padding: 10px;
   display: flex;
@@ -483,4 +492,65 @@
   border-radius: 5px;
   margin: 20px auto;
   margin-bottom: 0px;
+}
+
+
+
+/* **********************MEN******************* */
+
+.Page{
+  margin-top: 65px;
+}
+
+.intro_container{
+  width: 100%;
+  height: calc(100vh - 65px);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(./images/Men_intro.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro_container h1{
+  font-size: 80px;
+  color: white;
+  text-shadow: 1px 1px 10px black;
+}
+
+.scroll_fix{
+  width: 100%;
+  display: block;
+  margin-bottom: 90px;
+}
+
+.Page h2{
+  margin-top: 10px;
+  text-align: center;
+  font-size: 40px;
+}
+
+.product_container{
+  margin: 30px auto;
+  width: 100%;
+  padding: 10px;
+}
+
+.product{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.product img{
+  width: 80%;
+  max-width: 400px;
+  margin: 10px auto;
+  height: 180px;
+  border-radius: 5px;
+  text-align: center;
 }
