@@ -25,8 +25,6 @@ export default function Navigation(props) {
     const [searchOpen, setSearchOpen] = useState(false)
     const [cartOpen, setCartOpen] = useState(false)
 
-
-    
     
     const handleResize = (width, isMobile) =>{
         if (width > 650 && isMobile == true){
@@ -46,6 +44,18 @@ export default function Navigation(props) {
         } else{
             setTimeout(function(){setX(0)}, 770)
         }
+    }
+
+    const handleLogoClick = () => {
+        setMenuSlider(false)
+        if (!menuSlider){
+            setX(0)
+        } else{
+            setTimeout(function(){setX(0)}, 770)
+        }
+        window.scrollTo({
+            top: 0
+        })
     }
 
     const handleMenuSwitch = () => {
@@ -83,6 +93,16 @@ export default function Navigation(props) {
         }
     }
 
+    const handleMenuBlur2 = (menuID) => {
+        let subMenu = document.querySelector(menuID)
+        if (screenWidth > 650){
+            subMenu.style.display = "none"
+        }
+        window.scrollTo({
+            top: 0
+        })
+    }
+
     const handleSubMenuClick = (menuID) => {
         let subMenu = document.querySelector(menuID)
         if (screenWidth > 650){
@@ -92,11 +112,11 @@ export default function Navigation(props) {
 
     return (
         <div>
-            <Search searchOpen={searchOpen}/>
-            <Cart cartOpen={cartOpen}/>
+            {/* <Search searchOpen={searchOpen}/> */}
+            {/* <Cart cartOpen={cartOpen}/> */}
             <div className="navbar">
                 <div className="logo_div">
-                    <Link to="/">
+                    <Link to="/" onClick={handleLogoClick}>
                         <img src={eclipse_logo} alt="" />
                     </Link>
                 </div>
@@ -112,14 +132,15 @@ export default function Navigation(props) {
                         <div className="second_menu" style={{transform: `translateX(${X}%`}}>
                             <SubMenu 
                             menuItemSelected={menuItemSelected} 
-                            handleMenuSwitch={handleMenuSwitch}  
+                            handleMenuSwitch={handleMenuSwitch}
+                            handleMenuSlider={handleMenuSlider}  
                             />
                         </div>
                     </div>
                 </div> : 
                 <div className="desktop_menu">
                     <div className="dropdown1" onMouseOver={() => handleMenuHover(".submenu1")} onMouseOut={() => handleMenuBlur(".submenu1")}>
-                        <button>MEN</button>
+                        <Link className="MEN" to="/MEN" onClick={() => handleMenuBlur2(".submenu1")}>MEN</Link>
                         <div className="submenu1">
                             <Link to="/MEN#Shirts" onClick={() => handleSubMenuClick(".submenu1")}>SHIRTS</Link>
                             <Link to="/MEN#Shorts" onClick={() => handleSubMenuClick(".submenu1")}>SHORTS</Link>
@@ -127,27 +148,26 @@ export default function Navigation(props) {
                         </div>
                     </div>
                     <div className="dropdown2" onMouseOver={() => handleMenuHover(".submenu2")} onMouseOut={() => handleMenuBlur(".submenu2")}>
-                        <button>WOMEN</button>
+                        <Link to="/WOMEN" onClick={() => handleMenuBlur2(".submenu2")}>WOMEN</Link>
                         <div className="submenu2">
-                            <Link to="/WOMEN/Shirts" onClick={() => handleSubMenuClick(".submenu2")}>SHIRTS</Link>
-                            <Link to="/WOMEN/Shirts" onClick={() => handleSubMenuClick(".submenu2")}>SHORTS</Link>
-                            <Link to="/MEN/LEGGINGS" onClick={() => handleSubMenuClick(".submenu2")}>LEGGINGS</Link>
+                            <Link to="/WOMEN#Shirts" onClick={() => handleSubMenuClick(".submenu2")}>SHIRTS</Link>
+                            <Link to="/WOMEN#Shorts" onClick={() => handleSubMenuClick(".submenu2")}>SHORTS</Link>
+                            <Link to="/WOMEN#Leggings" onClick={() => handleSubMenuClick(".submenu2")}>LEGGINGS</Link>
                         </div>
                     </div>
                     <div className="dropdown3" onMouseOver={() => handleMenuHover(".submenu3")} onMouseOut={() => handleMenuBlur(".submenu3")}>
-                        <button>BOYS</button>
+                        <Link to="/BOYS" onClick={() => handleMenuBlur2(".submenu3")}>BOYS</Link>
                         <div className="submenu3">
-                            <Link to="/BOYS/Shirts" onClick={() => handleSubMenuClick(".submenu3")}>SHIRTS</Link>
-                            <Link to="/BOYS/Shirts" onClick={() => handleSubMenuClick(".submenu3")}>SHORTS</Link>
-                            <Link to="/BOYS/Shirts" onClick={() => handleSubMenuClick(".submenu3")}>JOGGERS</Link>
+                            <Link to="/BOYS#Shirts" onClick={() => handleSubMenuClick(".submenu3")}>SHIRTS</Link>
+                            <Link to="/BOYS#Shorts" onClick={() => handleSubMenuClick(".submenu3")}>SHORTS</Link>
+                            <Link to="/BOYS#Joggers" onClick={() => handleSubMenuClick(".submenu3")}>JOGGERS</Link>
                         </div>
                     </div>
                     <div className="dropdown4" onMouseOver={() => handleMenuHover(".submenu4")} onMouseOut={() => handleMenuBlur(".submenu4")}>
-                        <button>GIRLS</button>
-                        <div className="submenu4">
-                            <Link to="/GIRLS/Shirts" onClick={() => handleSubMenuClick(".submenu4")}>SHIRTS</Link>
-                            <Link to="/GIRLS/Shirts" onClick={() => handleSubMenuClick(".submenu4")}>SHORTS</Link>
-                            <Link to="/GIRLS/LEGGINGS" onClick={() => handleSubMenuClick(".submenu4")}>LEGGINGS</Link>
+                        <Link to="/GIRLS" onClick={() => handleMenuBlur2(".submenu4")}>GIRLS</Link>                        <div className="submenu4">
+                            <Link to="/GIRLS#Shirts" onClick={() => handleSubMenuClick(".submenu4")}>SHIRTS</Link>
+                            <Link to="/GIRLS#Shirts" onClick={() => handleSubMenuClick(".submenu4")}>SHORTS</Link>
+                            <Link to="/GIRLS#LEGGINGS" onClick={() => handleSubMenuClick(".submenu4")}>LEGGINGS</Link>
                         </div>
                     </div>    
                 </div>}

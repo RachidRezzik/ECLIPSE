@@ -11,7 +11,6 @@ export default function Footer() {
                     <input type="email" placeholder="Enter your email" />
                     <input type="submit" id="email_submit" value="Submit" />
                 </div>
-                <img src={social_media} alt="" />
             </div>
         </div>
     )
