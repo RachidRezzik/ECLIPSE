@@ -1,15 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
+//Components
+import ItemAdded from './ItemAdded'
 
 export default function AddtoBag(props) {
+    const [show, setShow] = useState(0)
     const quantity_selection = React.createRef()
     const size_selection = React.createRef()
     
     const handleAddToBag = () => {
         props.handleAddToBag(Number(quantity_selection.current.value), size_selection.current.value, props.itemTitle, props.itemPrice)
+        setShow(show + 1)
     }
 
     return (
-        <div>
+        <div style={{marginTop: "10px"}}>
+            <ItemAdded show={show} delay={1000} 
+                />
             <div className="product_selections">
                 <h3>Quantity:</h3>
                 <select ref={quantity_selection}>

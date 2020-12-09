@@ -126,8 +126,6 @@ export default function Navigation(props) {
                         <div className="first_menu" style={{transform: `translateX(${X}%`}}>
                             <button onClick={() => handleMenuClick('Men')}>MEN <img src={arrow} alt="" /></button>
                             <button onClick={() => handleMenuClick('Women')}>WOMEN <img src={arrow} alt="" /></button>
-                            <button onClick={() => handleMenuClick('Boys')}>BOYS <img src={arrow} alt="" /></button>
-                            <button onClick={() => handleMenuClick('Girls')}>GIRLS <img src={arrow} alt="" /></button>
                         </div>
                         <div className="second_menu" style={{transform: `translateX(${X}%`}}>
                             <SubMenu 
@@ -155,21 +153,6 @@ export default function Navigation(props) {
                             <Link to="/WOMEN#Leggings" onClick={() => handleSubMenuClick(".submenu2")}>LEGGINGS</Link>
                         </div>
                     </div>
-                    <div className="dropdown3" onMouseOver={() => handleMenuHover(".submenu3")} onMouseOut={() => handleMenuBlur(".submenu3")}>
-                        <Link to="/BOYS" onClick={() => handleMenuBlur2(".submenu3")}>BOYS</Link>
-                        <div className="submenu3">
-                            <Link to="/BOYS#Shirts" onClick={() => handleSubMenuClick(".submenu3")}>SHIRTS</Link>
-                            <Link to="/BOYS#Shorts" onClick={() => handleSubMenuClick(".submenu3")}>SHORTS</Link>
-                            <Link to="/BOYS#Joggers" onClick={() => handleSubMenuClick(".submenu3")}>JOGGERS</Link>
-                        </div>
-                    </div>
-                    <div className="dropdown4" onMouseOver={() => handleMenuHover(".submenu4")} onMouseOut={() => handleMenuBlur(".submenu4")}>
-                        <Link to="/GIRLS" onClick={() => handleMenuBlur2(".submenu4")}>GIRLS</Link>                        <div className="submenu4">
-                            <Link to="/GIRLS#Shirts" onClick={() => handleSubMenuClick(".submenu4")}>SHIRTS</Link>
-                            <Link to="/GIRLS#Shirts" onClick={() => handleSubMenuClick(".submenu4")}>SHORTS</Link>
-                            <Link to="/GIRLS#LEGGINGS" onClick={() => handleSubMenuClick(".submenu4")}>LEGGINGS</Link>
-                        </div>
-                    </div>    
                 </div>}
                 
                 <div className="hamburger_div">
@@ -181,7 +164,7 @@ export default function Navigation(props) {
                     </div>
                     <div>
                         <img src={shopping_bag} alt="" onClick={handleCart}/>
-                        <h4 className="bag_total" onClick={handleCart}>0</h4>
+                        <h4 className="bag_total" onClick={handleCart}>{props.bagItems}</h4>
                     </div>
                 </div>
             </div>

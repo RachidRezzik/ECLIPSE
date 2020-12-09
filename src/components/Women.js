@@ -22,69 +22,45 @@ export default function Women(props) {
                 <div className="product_container">
                     <div className="product">
                         <img src={Women_shirt} alt=""/>
-                        <h1 className="product_title">Dryfit T-shirt</h1>
-                        <h3>$17.50</h3>
-                        <AddtoBag 
-                        handleAddToBag={props.handleAddToBag}
-                        itemTitle={"DryFit T-Shirt"}
-                        itemPrice={17.50} 
-                        />
+                        <p>WOMEN</p>
+                        <h1 className="product_title">Classic Tank</h1>
+                        <h3>$12.50</h3>
                     </div>
                     <div className="product">
                         <img src={Women_shirt2} alt=""/>
-                        <h1 className="product_title">Dryfit T-shirt</h1>
-                        <h3>$17.50</h3>
-                        <AddtoBag 
-                        handleAddToBag={props.handleAddToBag}
-                        itemTitle={"DryFit T-Shirt"}
-                        itemPrice={17.50} 
-                        />
+                        <p>WOMEN</p>
+                        <h1 className="product_title">Longsleeve</h1>
+                        <h3>$14.50</h3>
                     </div>
                 </div>
                 <h2 id="Shorts">SHORTS</h2>
                 <div className="product_container">
                     <div className="product">
                         <img src={Women_short} alt=""/>
-                        <h1 className="product_title">Flexible Shorts</h1>
+                        <p>WOMEN</p>
+                        <h1 className="product_title">Athletic Shorts</h1>
                         <h3>$17.50</h3>
-                        <AddtoBag 
-                        handleAddToBag={props.handleAddToBag}
-                        itemTitle={"DryFit T-Shirt"}
-                        itemPrice={17.50} 
-                        />
                     </div>
                     <div className="product">
                         <img src={Women_short2} alt=""/>
+                        <p>WOMEN</p>
                         <h1 className="product_title">Flexible Shorts</h1>
-                        <h3>$17.50</h3>
-                        <AddtoBag 
-                        handleAddToBag={props.handleAddToBag}
-                        itemTitle={"DryFit T-Shirt"}
-                        itemPrice={17.50} 
-                        />
+                        <h3>$14.99</h3>
                     </div>
                 </div>
                 <h2 id="Leggings">LEGGINGS</h2>
                 <div className="product_container">
                     <div className="product">
                         <img src={Women_legging} alt=""/>
-                        <h1 className="product_title">Classic Joggers</h1>
+                        <p>WOMEN</p>
+                        <h1 className="product_title">Classic Leggings</h1>
                         <h3>$17.50</h3>
-                        <AddtoBag 
-                        handleAddToBag={props.handleAddToBag}
-                        itemTitle={"DryFit T-Shirt"}
-                        itemPrice={17.50} 
-                        />
                     </div>
                     <div className="product">
                         <img src={Women_legging2} alt=""/>
-                        <h1 className="product_title">Classic Joggers</h1>
-                        <h3>$17.50</h3>
-                        <AddtoBag 
-                        handleAddToBag={props.handleAddToBag}
-                        itemTitle={"DryFit T-Shirt"}
-                        itemPrice={17.50} 
-                        />
+                        <p>WOMEN</p>
+                        <h1 className="product_title">Eclipse1 Leggings</h1>
+                        <h3>$19.99</h3>
                     </div>
                 </div>
             </div> 
