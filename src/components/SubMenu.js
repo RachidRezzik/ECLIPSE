@@ -12,8 +12,8 @@ export default function SubMenu(props) {
         props.handleMenuSlider()
     }
     
-    let menu_content
-    let menu_title
+    let menu_content = ""
+    let menu_title = ""
     if (props.menuItemSelected === "Men") {
         menu_title = "MEN"
         menu_content = 

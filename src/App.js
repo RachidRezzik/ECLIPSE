@@ -7,8 +7,11 @@ import Home from './components/Home'
 import Footer from './components/Footer'
 import Men from './components/Men';
 import Women from './components/Women'
-import Cart from './components/Cart'
+import Cart from './components/Bag'
 import ItemPreview from './components/ItemPreview'
+//IMPORT Related Products Info
+import {Men_Products} from './components/MenData'
+import { Women_Products } from './components/WomenData';
 
 function App() {
   //Setting Local Storage for Orders (Array of Order Objects)
@@ -27,50 +30,50 @@ function App() {
 
 
   //Managing the Addition/Removal of an Order Item
-  const newItemInOrder = (quantity, size, itemTitle, itemPrice) => {
+  const newItemInOrder = (quantity, size, itemTitle, itemPrice, itemImage) => {
     let order_object = {}
     order_object.quantity = quantity
     order_object.size = size
     order_object.itemTitle = itemTitle
+    order_object.itemPrice = itemPrice
     order_object.subtotal = quantity * itemPrice
+    order_object.itemImage = itemImage
     order_object.key = bagOrders.length + 1
-    setBagOrders(bagOrders.concat(order_object))
-    setOrderStorage(bagOrders.concat(order_object))
-    console.log(bagOrders)
+    setBagOrders(bagOrders.concat([order_object]))
+    setOrderStorage(bagOrders.concat([order_object]))
   }
-
-  const handleAddToBag = (quantity, size, itemTitle, itemPrice) => {
+  
+  const handleAddToBag = (quantity, size, itemTitle, itemPrice, itemImage) => {
     setBagItems(bagItems + quantity)
     localStorage.setItem('bagItems', (bagItems + quantity))
     if (bagOrders.length === 0) {
-      console.log('new_item')
-      newItemInOrder(quantity, size, itemTitle, itemPrice)
+      newItemInOrder(quantity, size, itemTitle, itemPrice, itemImage)
     } else{
       let products_in_bag = []
       bagOrders.forEach(order => {
-        products_in_bag.push(order.itemTitle)
+        products_in_bag.push(order.itemImage)
       })
       bagOrders.forEach(order => {
-        if (products_in_bag.includes(itemTitle) && order.itemTitle === itemTitle){
+        if (products_in_bag.includes(itemImage) && order.itemImage === itemImage && order.size === size){
           order.quantity = order.quantity + quantity
           order.subtotal = order.subtotal + (itemPrice * quantity)
           setBagOrders(bagOrders)
           setOrderStorage(bagOrders)
-        } else if (products_in_bag.includes(itemTitle === false)){
-          newItemInOrder(quantity, size, itemTitle, itemPrice)
+        } else if (!products_in_bag.includes(itemImage) || products_in_bag.includes(itemImage) && order.itemImage === itemImage && order.size !== size){
+          newItemInOrder(quantity, size, itemTitle, itemPrice, itemImage)
         }
       })
     }
   }
 
-  // const handleRemoveFromBag = (quantity, itemTitle, orders) => {
-  //   let order_index = orders.findIndex(order => order.itemTitle === itemTitle)
-  //   let new_orders = orders.filter((order, idx) => idx !== order_index)
-  //   setBagOrders(new_orders)
-  //   setOrderStorage(new_orders)
-  //   setBagItems(bagItems - quantity)
-  //   localStorage.setItem('bagItems', (bagItems - quantity))
-  // }
+  const handleRemoveFromBag = (orders, itemImage, size, quantity) => {
+    let order_index = orders.findIndex(order => (order.itemImage === itemImage && order.size === size))
+    let new_orders = orders.filter((order, idx) => idx !== order_index)
+    setBagOrders(new_orders)
+    setOrderStorage(new_orders)
+    setBagItems(bagItems - quantity)
+    localStorage.setItem('bagItems', (bagItems - quantity))
+  }
 
   //Setting Local Storage for Number of Bag Items
   if (localStorage.getItem('bagItems') === undefined){
@@ -80,60 +83,142 @@ function App() {
 
   const [bagItems, setBagItems] = useState(bagItemsStorage === 0 ? 0 : Number(bagItemsStorage))
 
-  //Adding/Subtracting from the Number of Bag Items displayed in Navigation
 
-  // const handleAddQuantity = (item_title, orders, item_quantity) => {
-  //   let item_price = 9.99
-  //   if (item_title === "Texas Pecan"){
-  //     item_price = 7.99
-  //   } 
-  //   let order_index = orders.findIndex(order => order.item_title === item_title)
-  //   orders[order_index].item_quantity = item_quantity + 1
-  //   orders[order_index].subtotal = item_price * (item_quantity + 1)
-  //   setCartOrders(orders)
-  //   setOrderStorage(orders)
-  //   setCartItems(cartItems + 1)
-  //   localStorage.setItem('cartItems', (cartItems + 1))
-  // }
 
-  // const handleSubtractQuantity = (item_title, orders, item_quantity) => {
-  //   let item_price = 9.99
-  //   if (item_title === "Texas Pecan"){
-  //     item_price = 7.99
-  //   } 
-  //   let order_index = orders.findIndex(order => order.item_title === item_title)
-  //   if(item_quantity !== 0){
-  //     orders[order_index].item_quantity = item_quantity - 1
-  //     orders[order_index].subtotal = item_price * (item_quantity - 1)
-  //     setCartItems(cartItems - 1)
-  //     localStorage.setItem('cartItems', (cartItems - 1))
-  //   }
-  //   setCartOrders(orders)
-  //   setOrderStorage(orders)
-  // }
 
-  //Handling the Data Associated With Product User Wants to Preview/Add to Bag
+  // Adding/Subtracting from the Number of Bag Items displayed in Navigation
 
-  const [imageArray, setImageArray] = useState([])
-  const [itemTitle, setItemTitle] = useState("")
-  const [itemPrice, setItemPrice] = useState("")
-  const [category, setCategory] = useState("")
+  const handleAddQuantity = (orders, itemImage, size, quantity, itemPrice) => {
+    let order_index = orders.findIndex(order => (order.itemImage === itemImage && order.size === size))
+    orders[order_index].quantity = quantity + 1
+    orders[order_index].subtotal = itemPrice * (quantity + 1)
+    setBagOrders(orders)
+    setOrderStorage(orders)
+    setBagItems(bagItems + 1)
+    localStorage.setItem('bagItems', (bagItems + 1))
+  }
 
+  const handleSubtractQuantity = (orders, itemImage, size, quantity, itemPrice) => {
+    let order_index = orders.findIndex(order => (order.itemImage === itemImage && order.size === size))
+    if(quantity !== 0){
+      orders[order_index].quantity = quantity - 1
+      orders[order_index].subtotal = itemPrice * (quantity - 1)
+      setBagItems(bagItems - 1)
+      localStorage.setItem('bagItems', (bagItems - 1))
+    }
+    setBagOrders(orders)
+    setOrderStorage(orders)
+  }
+
+  //Local Storage for User's Product Selection they'd like to preview, contains all product details
+
+  const setFeaturedProductStorage = (featuredProduct) => {
+    localStorage.setItem('featuredProduct', JSON.stringify(featuredProduct))
+  }
+  
+  const readFeaturedProductStorage = () => {
+    return JSON.parse(localStorage.getItem('featuredProduct'))
+  }
+
+  if (localStorage.getItem('featuredProduct') === null){
+    setFeaturedProductStorage({})
+  }
+
+  const [featuredProduct, setFeaturedProduct] = useState(readFeaturedProductStorage() != null ? readFeaturedProductStorage() : "")
+
+  //Local Storage for User's selected image on the item preview of the product
+
+  const setFeaturedImageStorage = (featuredImage) => {
+    localStorage.setItem('featuredImage', JSON.stringify(featuredImage))
+  }
+  
+  const readFeaturedImageStorage = () => {
+    return JSON.parse(localStorage.getItem('featuredImage'))
+  }
+
+  if (localStorage.getItem('featuredImage') === null){
+    setFeaturedProductStorage("")
+  }
+
+  const [featuredImage, setFeaturedImage] = useState(readFeaturedImageStorage() != null ? featuredProduct.imageArray[0] : "")
+
+  //Handling the data needed for user's selected product to be previewed before adding to cart
   const handleItemPreview = (itemTitle, imageArray, itemPrice, category) => {
-    console.log(category)
-    setItemTitle(itemTitle)
-    setImageArray(imageArray)
-    setItemPrice(itemPrice)
-    setCategory(category)
+    let product = {
+      itemTitle: itemTitle,
+      imageArray: imageArray,
+      itemPrice: itemPrice,
+      category: category
+    }
+    setFeaturedProduct(product)
+    setFeaturedProductStorage(product)
+    window.scrollTo({
+        top: 0
+    })
+    handleFeaturedImage(imageArray[0])
+    handleRelatedProducts(product)
+  }
+
+  //Handling user selecting another product image in preview
+  const handleFeaturedImage = (src) => {
+    setFeaturedImage(src)
+    setFeaturedImageStorage(src)
   }
 
 
+  //Related Products Local Storage (displaying related products images/details next to featured product user is previewing)
+
+  const setRelatedProductsStorage = (relatedProducts) => {
+    localStorage.setItem('relatedProducts', JSON.stringify(relatedProducts))
+  }
+  
+  const readRelatedProductsStorage = () => {
+    return JSON.parse(localStorage.getItem('relatedProducts'))
+  }
+
+  if (localStorage.getItem('relatedProducts') === null){
+    setRelatedProductsStorage([])
+  }
+  //Random Generation of Related Products to the One the User is Currently Viewing
+  const [relatedProducts, setRelatedProducts] = useState(readRelatedProductsStorage() != null ? readRelatedProductsStorage() : [])
+  let featured_index
+
+  const handleRelatedProducts = (product) => {
+    let productCategoryData = []
+    if (product.category === "MEN"){
+      productCategoryData = Men_Products
+    } else{
+      productCategoryData = Women_Products
+    }
+    let newRelated = []
+    let new_product_list = productCategoryData.filter(product_obj => product_obj.itemTitle !== product.itemTitle)
+    let related_product1 = new_product_list[Math.floor(Math.random() * new_product_list.length)]
+    newRelated.push(related_product1)
+    new_product_list = new_product_list.filter(product_obj => product_obj.itemTitle !== related_product1.itemTitle)
+    let related_product2 = new_product_list[Math.floor(Math.random() * new_product_list.length)]
+    newRelated.push(related_product2)
+    new_product_list = new_product_list.filter(product_obj => product_obj.itemTitle !== related_product2.itemTitle)
+    let related_product3 = new_product_list[Math.floor(Math.random() * new_product_list.length)]
+    newRelated.push(related_product3)
+    setRelatedProducts(newRelated)
+    setRelatedProductsStorage(newRelated)  
+  }
+
+  //Search Toggle
+  const [searchOpen, setSearchOpen] = useState(false)
+
+  const handleSearch = () => {
+    setSearchOpen(!searchOpen)
+  }
 
   return (
     <div className="App">
     <HashRouter basename="/">
       <Navigation 
       bagItems={bagItems}
+      handleItemPreview={handleItemPreview}
+      searchOpen={searchOpen}
+      handleSearch={handleSearch}
       />
       <Switch>
         <Route exact path="/" component={Home} />
@@ -144,14 +229,18 @@ function App() {
         handleAddToBag={handleAddToBag}
         handleItemPreview={handleItemPreview} />} />
         <Route path="/Item" render={() => <ItemPreview 
-        itemTitle={itemTitle}
-        itemPrice={itemPrice}
-        imageArray={imageArray}
-        category={category}
+        featuredProduct={featuredProduct}
+        featuredImage={featuredImage}
+        relatedProducts={relatedProducts}
+        handleItemPreview={handleItemPreview}
+        handleFeaturedImage={handleFeaturedImage}
         handleAddToBag={handleAddToBag} />} />
-        <Route path="/WOMEN" render={() => <Cart 
+        <Route path="/BAG" render={() => <Cart 
         bagOrders={bagOrders}
-        bagItems={bagItems} />} />
+        bagItems={bagItems}
+        handleRemoveFromBag={handleRemoveFromBag}
+        handleAddQuantity={handleAddQuantity}
+        handleSubtractQuantity={handleSubtractQuantity} />} />
       </Switch>
       <Footer />
     </HashRouter>

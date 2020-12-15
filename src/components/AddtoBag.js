@@ -8,13 +8,14 @@ export default function AddtoBag(props) {
     const size_selection = React.createRef()
     
     const handleAddToBag = () => {
-        props.handleAddToBag(Number(quantity_selection.current.value), size_selection.current.value, props.itemTitle, props.itemPrice)
+        console.log(props.itemTitle, props.itemPrice)
+        props.handleAddToBag(Number(quantity_selection.current.value), size_selection.current.value, props.itemTitle, props.itemPrice, props.itemImage)
         setShow(show + 1)
     }
 
     return (
         <div style={{marginTop: "10px"}}>
-            <ItemAdded show={show} delay={1000} 
+            <ItemAdded show={show} delay={2000} 
                 />
             <div className="product_selections">
                 <h3>Quantity:</h3>

@@ -6,7 +6,7 @@ import { HashLink as Link } from 'react-router-hash-link';
 import SubMenu from '../components/SubMenu'
 import useWindowSize from './useWindowSize'
 import Search from './Search'
-import Cart from './Cart'
+import Cart from './Bag'
 
 //Images
 import eclipse_logo from '../images/eclipse_logo.JPG'
@@ -22,7 +22,6 @@ export default function Navigation(props) {
     const [isMobile, setIsMobile] = useState(useWindowSize().width <= 650 ? true : false)
     const screenWidth = useWindowSize().width
     const [X, setX] = useState(0)
-    const [searchOpen, setSearchOpen] = useState(false)
     const [cartOpen, setCartOpen] = useState(false)
 
     
@@ -72,7 +71,7 @@ export default function Navigation(props) {
     }
 
     const handleSearch = () => {
-        setSearchOpen(!searchOpen)
+        props.handleSearch()
     }
 
     const handleCart = () => {
@@ -110,10 +109,14 @@ export default function Navigation(props) {
         }
     }
 
+    const handleBagClick = () => {
+        window.scrollTo({
+            top: 0
+        })
+    }
+
     return (
         <div>
-            {/* <Search searchOpen={searchOpen}/> */}
-            {/* <Cart cartOpen={cartOpen}/> */}
             <div className="navbar">
                 <div className="logo_div">
                     <Link to="/" onClick={handleLogoClick}>
@@ -160,14 +163,21 @@ export default function Navigation(props) {
                 </div>
                 <div className="bag_div">
                     <div>
-                        <img id="search" src={searchOpen ? x_mark : search} alt="" onClick={handleSearch}/>
+                        <img id="search" src={props.searchOpen ? x_mark : search} alt="" onClick={handleSearch}/>
                     </div>
-                    <div>
-                        <img src={shopping_bag} alt="" onClick={handleCart}/>
-                        <h4 className="bag_total" onClick={handleCart}>{props.bagItems}</h4>
-                    </div>
+                        <div>
+                            <Link to="/BAG" onClick={handleBagClick}>
+                                <img src={shopping_bag} alt="" onClick={handleCart}/>
+                                <h4 className="bag_total" onClick={handleCart}>{props.bagItems}</h4>
+                            </Link>
+                        </div>
                 </div>
             </div>
+            <Search 
+            searchOpen={props.searchOpen}
+            handleItemPreview={props.handleItemPreview} 
+            handleSearch={props.handleSearch}   
+            />
         </div>
     )
 }
