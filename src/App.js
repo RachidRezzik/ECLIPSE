@@ -204,21 +204,70 @@ function App() {
     setRelatedProductsStorage(newRelated)  
   }
 
+
+  //Menu slider for smaller devices
+  const [menuSlider, setMenuSlider] = useState(false)
+  const [X, setX] = useState(0)
+
+  const handleMenuSlider = (message) => {
+    setSearchOpen(false)
+    if (message === "logo_click" || message === "bag_click"){
+        window.scrollTo({
+          top: 0
+        })
+        setMenuSlider(false)
+    } else {
+      setMenuSlider(!menuSlider)
+    }
+    if (!menuSlider){
+        setX(0)
+    } else{
+        setTimeout(function(){setX(0)}, 770)
+    }
+  }
+
+  const handleSearchCloseDesktop = () => {
+    setSearchOpen(false)
+  }
+
+  const handleClickOutsideSearch = () => {
+    setSearchOpen(false)
+  }
+
+  const handleMenuSwitch = () => {
+      if (X == 0){
+          setX(-100)
+      } else{
+          setX(0)
+      }
+  }
+
+
   //Search Toggle
   const [searchOpen, setSearchOpen] = useState(false)
 
   const handleSearch = () => {
+    if (menuSlider){
+      setMenuSlider(false)
+    }
     setSearchOpen(!searchOpen)
   }
+
 
   return (
     <div className="App">
     <HashRouter basename="/">
       <Navigation 
       bagItems={bagItems}
-      handleItemPreview={handleItemPreview}
       searchOpen={searchOpen}
+      menuSlider={menuSlider}
+      X={X}
+      handleMenuSwitch={handleMenuSwitch}
+      handleMenuSlider={handleMenuSlider}
+      handleItemPreview={handleItemPreview}
       handleSearch={handleSearch}
+      handleClickOutsideSearch={handleClickOutsideSearch}
+      handleSearchCloseDesktop={handleSearchCloseDesktop}
       />
       <Switch>
         <Route exact path="/" component={Home} />

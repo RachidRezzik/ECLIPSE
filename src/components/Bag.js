@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import x_mark from '../images/x_mark.png'
 import minus_sign from '../images/minus_sign.png'
 import plus_sign from '../images/plus_sign.png'
+//Components
+import CheckoutModal from './CheckoutModal'
 
 export default function Cart(props) {
     let total = 0
@@ -12,18 +14,13 @@ export default function Cart(props) {
     const setDiscountStorage = (discount_amount) => {
         localStorage.setItem('discount', discount_amount)
         setDiscount(discount_amount)
-        console.log(total)
     }
     
     const readDiscountStorage = () => {
         return Number(localStorage.getItem('discount'))   
     }
     
-    console.log(total, readDiscountStorage())
     const [discount, setDiscount] = useState(readDiscountStorage() != null ? readDiscountStorage() : 0)
-
-    console.log(discount)
-    
     
     if (localStorage.getItem('discount') === null){
         console.log('discount needs to be zero')
@@ -50,21 +47,39 @@ export default function Cart(props) {
         }
     }
 
-
     const coupon_code = React.createRef()
     const handleCoupon = () => {
-        console.log('enter', discount)
         if (coupon_code.current.value === "SANTACLAUS22" && total >= 50 && discount === 0){
             setDiscount(5)
             setDiscountStorage(5)
+            coupon_message = "Coupon Code: SANTACLAUS22 Applied"
         } else if (coupon_code.current.value === "GINGERBREAD15" && total >= 80){ 
             setDiscount(15)
             setDiscountStorage(15)
+            coupon_message = "Coupon Code: GINGERBREAD15 Applied"
         }
+    }
+
+    let coupon_message = <h4 className="coupon_message">Status: No Valid Coupons</h4>
+    if (discount == 5){
+        coupon_message = <h4 className="coupon_message">Status: <span style={{color: "rgb(5, 175, 5)"}}>SANTACLAUS22 Applied</span></h4>
+    } else if (discount == 15){
+        coupon_message = <h4 className="coupon_message">Status: <span style={{color: "rgb(5, 175, 5)"}}>GINGERBREAD15 Applied</span></h4>
+    }
+
+    //Message Modal When User Clicks Checkout
+    const [modalOpen, setModalOpen] = useState(false)
+
+    const handleModalClick = () => {
+        setModalOpen(!modalOpen)
     }
 
     return (
         <div className="bag_container">
+        <CheckoutModal 
+        modalOpen={modalOpen}
+        handleModalClick={handleModalClick}
+        />
             <h1>Your Bag</h1>
             {props.bagItems === 0 ? 
             <div>
@@ -76,14 +91,14 @@ export default function Cart(props) {
                         <h3>TOTAL: ({props.bagItems} {props.bagItems > 1 ? "Items" : "Item"})</h3>
                         <h3>${total}</h3>
                     </div>
-                    <button className="checkout">CHECKOUT</button>
+                    <button className="checkout" onClick={handleModalClick}>CHECKOUT</button>
                 </div>
                 <div className="bag_items_container">
                 {props.bagOrders.map(order => {
                     return (
                         <div key={order.key}className="bag_item">
                             <div className="subtotal_remove">
-                            ${order.subtotal}
+                            ${order.subtotal.toFixed(2)}
                             <img className="remove_item" src={x_mark} alt="" onClick={() => handleRemove(order.itemImage, order.size, order.quantity, order.subtotal)} />
                             </div>
                             <div className="item_image">
@@ -103,10 +118,14 @@ export default function Cart(props) {
                         )
                     })}
                 </div>
-                <form className="coupon_flex" onSubmit={handleCoupon}>
-                    <input ref={coupon_code} className="coupon_input" type="text" placeholder="Enter Coupon Code..." />
-                    <input className="coupon_submit" type="submit" value="Add Coupon" />
-                </form>
+                <div className="coupon_area">
+                    <h3>Coupon Codes</h3>
+                    <form className="coupon_flex" onSubmit={handleCoupon}>
+                        <input ref={coupon_code} className="coupon_input" type="text" placeholder="Enter Coupon Code..." />
+                        <input className="coupon_submit" type="submit" value="APPLY" />
+                    </form>
+                    {coupon_message}
+                </div>
                 <div style={{marginTop: "30px"}} className="order_summary_div">
                     <p>{props.bagItems} {props.bagItems > 1 ? "ITEMS" : "ITEM"}</p>
                     <p>${total}</p>
@@ -122,13 +141,13 @@ export default function Cart(props) {
                 {discount != 0 ? 
                 <div className="order_summary_div">
                     <p>COUPON CODE</p>
-                    <p style={{color:'red'}}>-${discount}</p>
+                    <p style={{color:'red'}}>-${discount.toFixed(2)}</p>
                 </div>: ""}
                 <div className="order_summary_div">
                     <h2>TOTAL</h2>
-                    <h2 >${total - discount}</h2>
+                    <h2 >${(total - discount).toFixed(2)}</h2>
                 </div>
-                <button className="checkout" style={{margin: "50px"}}>CHECKOUT</button>
+                <button className="checkout" style={{margin: "50px"}} onClick={handleModalClick}>CHECKOUT</button>
             </div>}
         </div>
     )

@@ -69,7 +69,7 @@ export default function Men(props) {
                 </Link>
             </div>
             <h2 id="Joggers">JOGGERS</h2>
-            <div className="product_container">
+            <div className="product_container" style={{marginBottom: "100px"}}>
                 <Link to="/Item" onClick={() => handleItemPreview("Athletic Joggers", [Mens_athletic, Mens_athletic2, Mens_athletic3], 27.50, "MEN")}>
                     <div className="product">
                         <img src={Mens_athletic} alt=""/>

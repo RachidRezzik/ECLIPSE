@@ -8,7 +8,6 @@ export default function AddtoBag(props) {
     const size_selection = React.createRef()
     
     const handleAddToBag = () => {
-        console.log(props.itemTitle, props.itemPrice)
         props.handleAddToBag(Number(quantity_selection.current.value), size_selection.current.value, props.itemTitle, props.itemPrice, props.itemImage)
         setShow(show + 1)
     }

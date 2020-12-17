@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import {Link} from 'react-router-dom' 
 //IMPORT Related Products Info
 import {Men_Products} from './MenData'
@@ -9,30 +9,13 @@ export default function Search(props) {
     const user_input = React.createRef()
     const all_products = Men_Products.concat(Women_Products)
 
-    
-
-    //Setting Local Storage for Orders (Array of Order Objects)
-    // const setSuggestionsStorage = (suggestions) => {
-    //     localStorage.setItem('suggestions', JSON.stringify(suggestions))
-    // }
-    
-    // const readSuggestionsStorage = () => {
-    //     return JSON.parse(localStorage.getItem('suggestions'))
-    // }
-
-    // if (localStorage.getItem('suggestions') === null ){
-    //     setSuggestionsStorage([])
-    // } 
-
-    // const [suggestions, setSuggestions] = useState(readSuggestionsStorage() != null ? readSuggestionsStorage() : [] ) 
-
     const [suggestions, setSuggestions] = useState([])
     
     const UserTyping = () => {
         let new_suggestions = []
         if (user_input.current.value.length >= 2){
             all_products.forEach(product => {
-                if (product.itemTitle.toLowerCase().includes(user_input.current.value.toLowerCase())){
+                if (product.itemTitle.toLowerCase().startsWith(user_input.current.value.toLowerCase()) || product.itemTitle.toLowerCase().includes(` ${user_input.current.value.toLowerCase()}`)){
                     let product_object = {}
                     product_object.itemTitle = product.itemTitle
                     product_object.itemPrice = product.itemPrice
@@ -54,8 +37,32 @@ export default function Search(props) {
         props.handleSearch()
     }
 
+    const node = useRef()
+
+    useEffect(() => {
+        let handler = (event) => {
+            if (!node.current.contains(event.target) && event.target.id !== "search") {
+                props.handleClickOutsideSearch()
+            }
+        }
+        document.addEventListener('mousedown', handler)
+        let search_container = document.querySelector('.search_container')
+        let search_height = search_container.offsetHeight
+        let search_top_position = `${-search_height - 65}px`
+        search_container.style.top = search_top_position
+        if (props.searchOpen){
+            search_container.style.top = "65px"
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handler)
+        }
+
+    });
+    
+
     return (
-        <div className={props.searchOpen ? "search_container active" : "search_container"}>
+        <div ref={node} className={props.searchOpen ? "search_container active" : "search_container"}>
             <input ref={user_input} id="search_input" type="text" placeholder="Search ECLIPSE Products..." onKeyUp={UserTyping} autoComplete="off"/>
             {suggestions.length >= 1 ? 
             <div className="suggestions_container">

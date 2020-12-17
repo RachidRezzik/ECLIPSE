@@ -17,12 +17,9 @@ import search from '../images/search.png'
 import arrow from '../images/arrow.png'
 
 export default function Navigation(props) {
-    const [menuSlider, setMenuSlider] = useState(false)
     const [menuItemSelected, setMenuItemSelected] = useState("")
     const [isMobile, setIsMobile] = useState(useWindowSize().width <= 650 ? true : false)
     const screenWidth = useWindowSize().width
-    const [X, setX] = useState(0)
-    const [cartOpen, setCartOpen] = useState(false)
 
     
     const handleResize = (width, isMobile) =>{
@@ -35,47 +32,17 @@ export default function Navigation(props) {
 
     handleResize(useWindowSize().width, isMobile)
 
-
-    const handleMenuSlider = () => {
-        setMenuSlider(!menuSlider)
-        if (!menuSlider){
-            setX(0)
-        } else{
-            setTimeout(function(){setX(0)}, 770)
-        }
-    }
-
-    const handleLogoClick = () => {
-        setMenuSlider(false)
-        if (!menuSlider){
-            setX(0)
-        } else{
-            setTimeout(function(){setX(0)}, 770)
-        }
-        window.scrollTo({
-            top: 0
-        })
-    }
-
-    const handleMenuSwitch = () => {
-        if (X == 0){
-            setX(-100)
-        } else{
-            setX(0)
-        }
+    const handleMenuSlider = (message) => {
+        props.handleMenuSlider(message)
     }
 
     const handleMenuClick = (menuItem) => {
         setMenuItemSelected(menuItem)
-        handleMenuSwitch()
+        props.handleMenuSwitch()
     }
 
     const handleSearch = () => {
         props.handleSearch()
-    }
-
-    const handleCart = () => {
-        setCartOpen(!cartOpen)
     }
 
     const handleMenuHover = (menuID) => {
@@ -100,12 +67,14 @@ export default function Navigation(props) {
         window.scrollTo({
             top: 0
         })
+        props.handleSearchCloseDesktop()
     }
 
     const handleSubMenuClick = (menuID) => {
         let subMenu = document.querySelector(menuID)
         if (screenWidth > 650){
             subMenu.style.display = "none"
+            props.handleSearchCloseDesktop()
         }
     }
 
@@ -113,27 +82,28 @@ export default function Navigation(props) {
         window.scrollTo({
             top: 0
         })
+        props.handleMenuSlider("bag_click")
     }
 
     return (
         <div>
             <div className="navbar">
                 <div className="logo_div">
-                    <Link to="/" onClick={handleLogoClick}>
+                    <Link to="/" onClick={() => handleMenuSlider("logo_click")}>
                         <img src={eclipse_logo} alt="" />
                     </Link>
                 </div>
                 {isMobile ? 
-                <div className={menuSlider ? "menu_slider active" : "menu_slider"}>
+                <div className={props.menuSlider ? "menu_slider active" : "menu_slider"}>
                     <div className="slider_container">
-                        <div className="first_menu" style={{transform: `translateX(${X}%`}}>
+                        <div className="first_menu" style={{transform: `translateX(${props.X}%`}}>
                             <button onClick={() => handleMenuClick('Men')}>MEN <img src={arrow} alt="" /></button>
                             <button onClick={() => handleMenuClick('Women')}>WOMEN <img src={arrow} alt="" /></button>
                         </div>
-                        <div className="second_menu" style={{transform: `translateX(${X}%`}}>
+                        <div className="second_menu" style={{transform: `translateX(${props.X}%`}}>
                             <SubMenu 
                             menuItemSelected={menuItemSelected} 
-                            handleMenuSwitch={handleMenuSwitch}
+                            handleMenuSwitch={props.handleMenuSwitch}
                             handleMenuSlider={handleMenuSlider}  
                             />
                         </div>
@@ -159,7 +129,7 @@ export default function Navigation(props) {
                 </div>}
                 
                 <div className="hamburger_div">
-                    <img src={menuSlider ? x_mark : hamburger} alt="" onClick={handleMenuSlider}/>
+                    <img src={props.menuSlider ? x_mark : hamburger} alt="" onClick={() => handleMenuSlider("hamburger_click")}/>
                 </div>
                 <div className="bag_div">
                     <div>
@@ -167,8 +137,8 @@ export default function Navigation(props) {
                     </div>
                         <div>
                             <Link to="/BAG" onClick={handleBagClick}>
-                                <img src={shopping_bag} alt="" onClick={handleCart}/>
-                                <h4 className="bag_total" onClick={handleCart}>{props.bagItems}</h4>
+                                <img src={shopping_bag} alt=""/>
+                                <h4 className="bag_total">{props.bagItems}</h4>
                             </Link>
                         </div>
                 </div>
@@ -176,7 +146,8 @@ export default function Navigation(props) {
             <Search 
             searchOpen={props.searchOpen}
             handleItemPreview={props.handleItemPreview} 
-            handleSearch={props.handleSearch}   
+            handleSearch={props.handleSearch}
+            handleClickOutsideSearch={props.handleClickOutsideSearch}   
             />
         </div>
     )

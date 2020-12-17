@@ -2,8 +2,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  /* scroll-behavior: smooth; */
-  font-family: 'Signika', sans-serif;
+  font-family: 'ABeeZee', sans-serif;
 }
 
 /* **************NAVBAR***************** */
@@ -299,6 +298,7 @@
 
 .footer h3{
   width: 90%;
+  max-width: 400px;
 }
 
 .footer p{
@@ -509,10 +509,6 @@
   transition: all .35s;
 }
 
-.product:hover{
-  transform: scale(1.015);
-}
-
 .product h1{
   margin: 10px 0px;
 }
@@ -558,6 +554,18 @@
 .featured_image{
   width: 100%;
   height: 345px;
+  border-radius: 0px 0px 2.5px 0px;
+}
+
+#expand{
+  width: 27.5px;
+  background: rgb(31, 122, 241);
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  right: 5px;
+  bottom: 7.5px;
+  cursor: pointer;
 }
 
 .item_photos{
@@ -572,11 +580,7 @@
   height: 80px;
   margin: 10px 5px;
   cursor: pointer;
-  transition: all .5s;
-}
-
-.item_photos img:hover{
-  transform: scale(1.05);
+  border-radius: 2.5px;
 }
 
 .item_options{
@@ -606,9 +610,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 15px auto;
+  margin: 11px auto;
   font-size: 20px;
   width: 100%;
+  height: 37.5px;
+}
+
+.product_selections h3{
+  margin-bottom: 11px;
 }
 
 .product_selections select{
@@ -629,7 +638,6 @@
   border-radius: 5px;
   margin: 55px auto;
   cursor: pointer;
-  
 }
 
 .item_added_alert{
@@ -668,19 +676,20 @@
 .related_products_container h2{
   width: 100%;
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .related_product{
-  margin: 13.5px auto;
+  margin: 2.5px auto;
   width: 350px;
   display: flex;
-  height: 105px;
+  height: 95px;
   box-shadow: 2px 2px 10px lightgrey;
   cursor: pointer;
 }
 
 .related_product img{
-  width: 150px;
+  width: 130px;
 }
 
 .related_product .related_description{
@@ -749,6 +758,7 @@
   outline: none;
   font-size: 22.5px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .bag_item{
@@ -771,6 +781,7 @@
   height: 12.5px;
   margin-left: 5px;
   margin-bottom: 1.5px;
+  cursor: pointer;
 }
 
 .item_image img{
@@ -814,17 +825,31 @@
   background: rgb(5, 175, 5);
 }
 
+.coupon_area{
+  background: rgb(226, 225, 225);
+  border-radius: 5px;
+  border: solid 1px rgb(97, 97, 97);
+  margin: 30px auto;
+  padding-top: 5px;
+  padding-bottom: 2.5px;
+}
+
 .coupon_flex{
   display: flex;
-  width: 100%;
-  margin-top: 30px;
+  width: 95%;
+  margin: 5px auto;
+  margin-bottom: 10px;
+  border: 1px solid black;
 }
 
 .coupon_input{
   width: 75%;
   height: 30px;
   font-size: 15px;
-  text-indent: 25px;
+  text-indent: 10px;
+  border-radius: 0px;
+  border: none;
+  outline: none;
 }
 
 .coupon_submit{
@@ -835,6 +860,14 @@
   outline: none;
   padding: 0px 5px;
   text-indent: 0px;
+  height: 31px;
+}
+
+.coupon_message, .coupon_area h3{
+  text-align: left;
+  width: 95%;
+  margin: 0px auto;
+  padding-bottom: 5px;
 }
 
 .order_summary_div{
@@ -843,37 +876,102 @@
   padding: 5px 10px;
 }
 
+/* *****************Checkout Modal Message**************** */
+
+.checkout_modal, .image_modal{
+  display: none;
+}
+
+.checkout_modal.active, .image_modal.active{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 110;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.modal_message_container{
+  background: white;
+  padding: 30px 15px;
+  width: 70%;
+  margin: 0px auto;
+  min-width: 270px;
+  max-width: 500px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+#expanded_image{
+  width: 80%;
+  margin: 0px auto;
+  max-width: 700px;
+  height: 55vw;
+  max-height: 500px;
+}
+
+.modal_message_container h3{
+  margin: 10px auto;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.modal_message_container h4{
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+
+.exit_modal{
+  display: none;
+}
+
+.exit_modal.active{
+  position: fixed;
+  display: inherit;
+  top: 2.5%;
+  right: 2.5%;
+  width: 30px;
+  cursor: pointer;
+  z-index: 110;
+}
 
 /* ********************SEARCH RESULTS************ */
 
 .search_container{
   position: fixed;
-  right: -100vw;
-  top: 65px;
-  height: calc(100vh - 65px);
+  /* right: -100vw; */
+  padding: 20px 10px;
   width: 100%;
-  transition: right .55s ease-in-out;
-  background: lightgrey;
+  background: rgb(226, 225, 225);
   text-align: center;
   opacity: 1;
   z-index: 22;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.692);
+  border-radius: 0px 0px 5px 5px;
+  transition: top .5s ease;
 }
 
 .search_container.active{
-  right: 0px;
+  top: 65px;
 }
 
 .search_container input{
   width: 80%;
+  max-width: 600px;
   margin: 10px auto;
   height: 40px;
   border-radius: 5px;
   outline: none;
   border: none;
-  text-indent: 15px;
+  text-indent: 25px;
   font-size: 17.5px;
 }
 
@@ -889,7 +987,7 @@
 
 .suggestion_div{
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   margin: 10px auto;
 }
 
