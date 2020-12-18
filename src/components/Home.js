@@ -17,11 +17,11 @@ export default function Home() {
                     <div className="sale_flex">
                         <div className="sale_item">
                             <h2>$5 Off Order of $50 or More</h2>
-                            <button>Coupon Code: GINGERBREAD15</button>
+                            <button>Coupon Code: SANTACLAUS22</button>
                         </div>
                         <div className="sale_item">
                             <h2>$15 Off Order of $80 or More</h2>
-                            <button>Coupon Code: SANTACLAUS22</button>
+                            <button>Coupon Code: GINGERBREAD15</button>
                         </div>
                     </div>
                 </div>
