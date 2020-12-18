@@ -75,7 +75,7 @@ export default function Search(props) {
                                 <div className="suggestion_description">
                                     <p>{suggestion.category}</p>
                                     <h4>{suggestion.itemTitle}</h4>
-                                    <h4>(${suggestion.itemPrice})</h4>
+                                    <h4>(${suggestion.itemPrice.toFixed(2)})</h4>
                                 </div>
                             </div>          
                             </Link>

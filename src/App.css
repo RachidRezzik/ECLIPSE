@@ -137,7 +137,7 @@
   background: white;
   text-align: left;
   font-size: 30px;
-  margin-top: 60px;
+  margin-top: 50px;
   padding: 10px 0px;
   padding-left: 40px;
   display: flex;
@@ -191,7 +191,7 @@
   width: 100%;
   text-align: left;
   font-size: 30px;
-  margin-top: 60px;
+  margin-top: 50px;
   padding: 10px 0px;
   text-decoration: none;
   color: black;
@@ -313,19 +313,27 @@
 }
 
 .newsletter input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   height: 25px;
   border: none;
   outline: none;
   text-indent: 10px;
+  border-radius: 2.5px 0px 0px 2.5px;
 }
 
 #email_submit{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background: rgb(31, 122, 241);
   color: white;
   border: none;
   outline: none;
   padding: 0px 5px;
   text-indent: 0px;
+  border-radius: 0px 2.5px 2.5px 0px;
 }
 
 .footer img{
@@ -389,11 +397,12 @@
 
 .sale_background{
   background: red;
-  width: 80%;
+  width: 90%;
   max-width: 900px;
   margin: 100px auto;
   border-radius: 5px;
   box-shadow: 2px 2px 15px rgb(59, 59, 59);
+  text-align: center;
 }
 
 .sale_flex{
@@ -460,6 +469,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 #container_women{
@@ -480,7 +490,7 @@
 }
 
 .product_container{
-  width: 100%;
+  width: 90%;
   margin: 30px auto;
   margin-top: 15px;
   margin-top: 40px;
@@ -497,17 +507,17 @@
 }
 
 .product{
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  margin: 15px 10px;
+  margin: 15px auto;
   text-indent: 20px;
   box-shadow: 2px 2px 10px lightgrey;
   padding-bottom: 10px;
   cursor: pointer;
-  transition: all .35s;
 }
 
 .product h1{
@@ -518,12 +528,21 @@
   width: 100%;
   margin: 10px auto;
   margin-top: 0px;
-  height: 250px;
+  height: 200px;
   text-align: center;
 }
 
 
+@media screen and (min-width: 440px){
+  .product img{
+    height: 250px;
+  }
 
+  .product{
+    width: 400px;
+    margin: 15px 20px;
+  }
+}
 
 
 /* *********ITEM PREVIEW*********** */
@@ -540,7 +559,7 @@
 .item_preview_container{
   width: 95%;
   max-width: 500px;
-  margin: 25px 20px;
+  margin: 25px auto;
   min-height: 415px;
   display: flex;
   flex-wrap: wrap;
@@ -554,8 +573,8 @@
 
 .featured_image{
   width: 100%;
-  height: 345px;
-  border-radius: 0px 0px 2.5px 0px;
+  height: 245px;
+  border-radius: 0px;
 }
 
 #expand{
@@ -577,9 +596,9 @@
 }
 
 .item_photos img{
-  width: 100px;
-  height: 80px;
-  margin: 10px 5px;
+  width: 80px;
+  height: 70px;
+  margin: 10px 2.5px;
   cursor: pointer;
   border-radius: 2.5px;
 }
@@ -662,11 +681,29 @@
   z-index: 22;
 }
 
+@media screen and (min-width: 350px){
+  .featured_image{
+    width: 100%;
+    height: 345px;
+  }
+
+  .item_photos{
+    height: 100px;
+  }
+  
+  .item_photos img{
+    width: 100px;
+    height: 80px;
+    margin: 10px 5px;
+  }
+}
+
+
 /* Related Products */
 
 .related_products_container{
-  width: 350px;
-  margin: 0px 20px;
+  width: 95%;
+  margin: 0px auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -682,7 +719,7 @@
 
 .related_product{
   margin: 2.5px auto;
-  width: 350px;
+  width: 100%;
   display: flex;
   height: 95px;
   box-shadow: 2px 2px 10px lightgrey;
@@ -690,7 +727,7 @@
 }
 
 .related_product img{
-  width: 130px;
+  width: 100px;
 }
 
 .related_product .related_description{
@@ -699,6 +736,21 @@
 
 .related_description p, .related_description h4{
   margin: 5px;
+}
+
+@media screen and (min-width: 380px){
+  .related_products_container{
+    margin: 0px 20px;
+    height: 415px;
+  }
+
+  .related_product{
+    width: 350px;
+  }
+
+  .related_product img{
+    width: 130px;
+  }
 }
 
 @media screen and (min-width: 650px){
@@ -775,18 +827,19 @@
   position: absolute;
   right: 12px;
   top: 12.5px;
+  font-size: 15px;
 }
 
 .subtotal_remove img{
   width: 12.5px;
   height: 12.5px;
   margin-left: 5px;
-  margin-bottom: 1.5px;
+  margin-bottom: -1.5px;
   cursor: pointer;
 }
 
 .item_image img{
-  width: 150px;
+  width: 100px;
   height: 100%;
 }
 
@@ -794,7 +847,7 @@
   text-align: left;
   padding: 10px 0px;
   padding-left: 10px;
-  font-size: 12.5px;
+  font-size: 10px;
 }
 
 .quantity_div{
@@ -818,13 +871,15 @@
   cursor: pointer;
 }
 
-#minus_sign:hover{
-  background: red;
+@media (hover: hover) and (pointer: fine) {
+  #minus_sign:hover{
+    background: red;
+  }
+  #plus_sign:hover{
+    background: rgb(5, 175, 5);
+  }
 }
 
-#plus_sign:hover{
-  background: rgb(5, 175, 5);
-}
 
 .coupon_area{
   background: rgb(226, 225, 225);
@@ -840,20 +895,26 @@
   width: 95%;
   margin: 5px auto;
   margin-bottom: 10px;
-  border: 1px solid black;
+  border-radius: 2.5px;
 }
 
 .coupon_input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 75%;
   height: 30px;
   font-size: 15px;
   text-indent: 10px;
-  border-radius: 0px;
+  border-radius: 2.5px 0px 0px 2.5px;
   border: none;
   outline: none;
 }
 
 .coupon_submit{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 25%;
   background: rgb(31, 122, 241);
   color: white;
@@ -861,7 +922,8 @@
   outline: none;
   padding: 0px 5px;
   text-indent: 0px;
-  height: 31px;
+  height: 30px;
+  border-radius: 0px 2.5px 2.5px 0px;
 }
 
 .coupon_message, .coupon_area h3{
@@ -875,6 +937,21 @@
   display: flex;
   justify-content: space-between;
   padding: 5px 10px;
+}
+
+@media screen and (min-width: 350px){
+  .item_image img{
+    width: 150px;
+    height: 100%;
+  }
+
+  .item_description{
+    font-size: 12.5px;
+  }
+
+  .subtotal_remove{
+    font-size: 17.5px;
+  }
 }
 
 /* *****************Checkout Modal Message**************** */
@@ -965,14 +1042,14 @@
 }
 
 .search_container input{
-  width: 80%;
+  width: 90%;
   max-width: 600px;
   margin: 10px auto;
   height: 40px;
   border-radius: 5px;
   outline: none;
   border: none;
-  text-indent: 25px;
+  text-indent: 15px;
   font-size: 17.5px;
 }
 
@@ -981,7 +1058,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 90%;
   margin: 10px auto;
   text-align: center;
 }

@@ -64,7 +64,7 @@ export default function ItemPreview(props) {
                     <div className="item_options">
                         <p>{props.featuredProduct.category}</p>
                         <h3>{props.featuredProduct.itemTitle}</h3>
-                        <h3>${props.featuredProduct.itemPrice}</h3>
+                        <h3>${props.featuredProduct.itemPrice.toFixed(2)}</h3>
                         <AddtoBag 
                         handleAddToBag={props.handleAddToBag}
                         itemTitle={props.featuredProduct.itemTitle}  
