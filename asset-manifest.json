@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/ECLIPSE/static/css/main.33e8fa3c.chunk.css",
-    "main.js": "/ECLIPSE/static/js/main.731fdf87.chunk.js",
-    "main.js.map": "/ECLIPSE/static/js/main.731fdf87.chunk.js.map",
+    "main.css": "/ECLIPSE/static/css/main.7a529d8d.chunk.css",
+    "main.js": "/ECLIPSE/static/js/main.86d37bc9.chunk.js",
+    "main.js.map": "/ECLIPSE/static/js/main.86d37bc9.chunk.js.map",
     "runtime-main.js": "/ECLIPSE/static/js/runtime-main.53758114.js",
     "runtime-main.js.map": "/ECLIPSE/static/js/runtime-main.53758114.js.map",
     "static/js/2.42ec64e2.chunk.js": "/ECLIPSE/static/js/2.42ec64e2.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.2733d3f3.chunk.js": "/ECLIPSE/static/js/3.2733d3f3.chunk.js",
     "static/js/3.2733d3f3.chunk.js.map": "/ECLIPSE/static/js/3.2733d3f3.chunk.js.map",
     "index.html": "/ECLIPSE/index.html",
-    "static/css/main.33e8fa3c.chunk.css.map": "/ECLIPSE/static/css/main.33e8fa3c.chunk.css.map",
+    "static/css/main.7a529d8d.chunk.css.map": "/ECLIPSE/static/css/main.7a529d8d.chunk.css.map",
     "static/js/2.42ec64e2.chunk.js.LICENSE.txt": "/ECLIPSE/static/js/2.42ec64e2.chunk.js.LICENSE.txt",
     "static/media/Men_athletic.0ac08b54.jpg": "/ECLIPSE/static/media/Men_athletic.0ac08b54.jpg",
     "static/media/Men_athletic2.b6291e86.jpg": "/ECLIPSE/static/media/Men_athletic2.b6291e86.jpg",
@@ -64,7 +64,7 @@
   "entrypoints": [
     "static/js/runtime-main.53758114.js",
     "static/js/2.42ec64e2.chunk.js",
-    "static/css/main.33e8fa3c.chunk.css",
-    "static/js/main.731fdf87.chunk.js"
+    "static/css/main.7a529d8d.chunk.css",
+    "static/js/main.86d37bc9.chunk.js"
   ]
 }
