@@ -13,6 +13,7 @@ export default function Search(props) {
     
     const UserTyping = () => {
         let new_suggestions = []
+        setSuggestions([])
         if (user_input.current.value.length >= 2){
             all_products.forEach(product => {
                 if (product.itemTitle.toLowerCase().startsWith(user_input.current.value.toLowerCase()) || product.itemTitle.toLowerCase().includes(` ${user_input.current.value.toLowerCase()}`)){
@@ -26,7 +27,11 @@ export default function Search(props) {
                 }
             })
         }
-        setSuggestions(new_suggestions)
+        if (new_suggestions.length >= 1){
+            setSuggestions(new_suggestions)
+        } else if (new_suggestions.length == 0 && user_input.current.value.length >= 2){
+            setSuggestions(<h2 className="no_results_found">No Search Results Found for "{user_input.current.value}"</h2>)
+        }
     }
 
     const handleItemPreview2 = (itemTitle, imageArray, itemPrice, category) => {
@@ -64,7 +69,7 @@ export default function Search(props) {
     return (
         <div ref={node} className={props.searchOpen ? "search_container active" : "search_container"}>
             <input ref={user_input} id="search_input" type="text" placeholder="Search ECLIPSE Products..." onKeyUp={UserTyping} autoComplete="off"/>
-            {suggestions.length >= 1 ? 
+            {suggestions.length >= 1 && Array.isArray(suggestions) ? 
             <div className="suggestions_container">
             {suggestions.map(suggestion => {
                     return (
@@ -82,7 +87,7 @@ export default function Search(props) {
                         </div>             
                         )
                     })}
-            </div> : ""
+            </div> : suggestions.type == "h2" ? suggestions : ""
             }
         </div>
     )

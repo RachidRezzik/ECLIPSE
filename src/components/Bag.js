@@ -106,7 +106,7 @@ export default function Cart(props) {
                             </div>
                             <div className="item_description">
                                 <h2>{order.itemTitle}</h2>
-                                <h2>Size:{order.size}</h2>
+                                <h2>Size: {order.size}</h2>
                                 <h2>Quantity:</h2>
                                 <div className="quantity_div">
                                     <img id="minus_sign" src={minus_sign} alt="" onClick={() => handleSubtract(order.itemImage, order.size, order.quantity, order.itemPrice)}/>

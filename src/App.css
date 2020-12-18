@@ -819,6 +819,7 @@
   position: relative;
   margin: 10px auto;
   display: flex;
+  height: 107.5px;
 }
 
 .subtotal_remove{
@@ -839,7 +840,7 @@
 }
 
 .item_image img{
-  width: 100px;
+  width: 85px;
   height: 100%;
 }
 
@@ -847,7 +848,7 @@
   text-align: left;
   padding: 10px 0px;
   padding-left: 10px;
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .quantity_div{
@@ -939,7 +940,10 @@
   padding: 5px 10px;
 }
 
-@media screen and (min-width: 350px){
+@media screen and (min-width: 400px){
+  .bag_item{
+    height: unset;
+  }
   .item_image img{
     width: 150px;
     height: 100%;
@@ -1051,6 +1055,14 @@
   border: none;
   text-indent: 15px;
   font-size: 17.5px;
+}
+
+.no_results_found{
+  width: 90%;
+  margin: 0px auto;
+  max-width: 600px;
+  font-size: 20px;
+  text-align: left;
 }
 
 .suggestions_container{
