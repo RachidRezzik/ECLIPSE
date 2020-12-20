@@ -710,6 +710,7 @@
   justify-content: center;
   flex-wrap: wrap;
   height: 415px;
+  max-width: 350px;
 }
 
 .related_products_container h2{
@@ -759,6 +760,7 @@
     justify-content: space-between;
     padding: 0px;
     max-width: 575px;
+    margin: 0px 20px;
   }
 
   .item_images{
