@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ECLIPSE/static/css/main.eda0bd92.chunk.css",
-    "main.js": "/ECLIPSE/static/js/main.91669ad4.chunk.js",
-    "main.js.map": "/ECLIPSE/static/js/main.91669ad4.chunk.js.map",
+    "main.js": "/ECLIPSE/static/js/main.fb328751.chunk.js",
+    "main.js.map": "/ECLIPSE/static/js/main.fb328751.chunk.js.map",
     "runtime-main.js": "/ECLIPSE/static/js/runtime-main.53758114.js",
     "runtime-main.js.map": "/ECLIPSE/static/js/runtime-main.53758114.js.map",
     "static/js/2.42ec64e2.chunk.js": "/ECLIPSE/static/js/2.42ec64e2.chunk.js",
@@ -56,13 +56,13 @@
     "static/media/Women_tank2.c186115c.jpg": "/ECLIPSE/static/media/Women_tank2.c186115c.jpg",
     "static/media/Women_tank3.7d097410.jpg": "/ECLIPSE/static/media/Women_tank3.7d097410.jpg",
     "static/media/X-icon.fae5b34f.svg": "/ECLIPSE/static/media/X-icon.fae5b34f.svg",
-    "static/media/eclipse_logo.a0cf247d.JPG": "/ECLIPSE/static/media/eclipse_logo.a0cf247d.JPG",
+    "static/media/eclipse_logo.c20d0d14.JPG": "/ECLIPSE/static/media/eclipse_logo.c20d0d14.JPG",
     "static/media/white_x_mark.24f16f08.png": "/ECLIPSE/static/media/white_x_mark.24f16f08.png"
   },
   "entrypoints": [
     "static/js/runtime-main.53758114.js",
     "static/js/2.42ec64e2.chunk.js",
     "static/css/main.eda0bd92.chunk.css",
-    "static/js/main.91669ad4.chunk.js"
+    "static/js/main.fb328751.chunk.js"
   ]
 }
