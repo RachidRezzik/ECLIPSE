@@ -1,5 +1,4 @@
 import React from 'react'
-import social_media from '../images/social_media.png'
 
 export default function Footer() {
     return (

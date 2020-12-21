@@ -6,15 +6,14 @@ import { HashLink as Link } from 'react-router-hash-link';
 import SubMenu from '../components/SubMenu'
 import useWindowSize from './useWindowSize'
 import Search from './Search'
-import Cart from './Bag'
 
 //Images
 import eclipse_logo from '../images/eclipse_logo.JPG'
-import hamburger from '../images/hamburger.png'
-import x_mark from '../images/x_mark.png'
-import shopping_bag from '../images/shopping_bag.png'
-import search from '../images/search.png'
-import arrow from '../images/arrow.png'
+import hamburger from '../images/List-Menu.svg'
+import x_mark from '../images/X-icon.svg'
+import shopping_bag from '../images/Bag-icon.svg'
+import search from '../images/Search-icon.svg'
+import arrow from '../images/Arrow-icon.svg'
 
 export default function Navigation(props) {
     const [menuItemSelected, setMenuItemSelected] = useState("")

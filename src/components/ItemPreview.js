@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import AddtoBag from './AddtoBag'
 //Images
-import expand from '../images/expand.png'
+import expand from '../images/Expand-icon.svg'
 import ImageModal from './ImageModal'
 
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 //Images
-import x_mark from '../images/x_mark.png'
-import minus_sign from '../images/minus_sign.png'
-import plus_sign from '../images/plus_sign.png'
+import x_mark from '../images/X-icon.svg'
+import minus_sign from '../images/Minus-icon.svg'
+import plus_sign from '../images/Plus-icon.svg'
 //Components
 import CheckoutModal from './CheckoutModal'
 

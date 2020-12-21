@@ -1,7 +1,7 @@
 import React from 'react'
 import { HashLink as Link } from 'react-router-hash-link';
 //Images
-import arrow from '../images/arrow.png'
+import arrow from '../images/Arrow-icon.svg'
 
 export default function SubMenu(props) {
     const handleBackClick = () => {
