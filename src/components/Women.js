@@ -39,7 +39,7 @@ export default function Women(props) {
                 <div className="product_container">
                     <Link to="/Item" onClick={() => handleItemPreview("Classic Tank", [Women_tank, Women_tank2, Women_tank3], 14.99, "WOMEN")}>
                         <div className="product">
-                            <img src={Women_tank} alt=""/>
+                            <img loading="lazy" src={Women_tank} alt=""/>
                             <p>WOMEN</p>
                             <h1 className="product_title">Classic Tank</h1>
                             <h3>$12.50</h3>
@@ -47,7 +47,7 @@ export default function Women(props) {
                     </Link>
                     <Link to="/Item" onClick={() => handleItemPreview("Dryfit Shirt", [Women_shirt, Women_shirt2, Women_shirt3], 14.99, "WOMEN")}>
                         <div className="product">
-                            <img src={Women_shirt} alt=""/>
+                            <img loading="lazy" src={Women_shirt} alt=""/>
                             <p>WOMEN</p>
                             <h1 className="product_title">Dryfit Shirt</h1>
                             <h3>$14.50</h3>
@@ -58,7 +58,7 @@ export default function Women(props) {
                 <div className="product_container">
                     <Link to="/Item" onClick={() => handleItemPreview("Athletic Shorts", [Women_athletic, Women_athletic2, Women_athletic3], 14.99, "WOMEN")}>
                         <div className="product">
-                            <img src={Women_athletic} alt=""/>
+                            <img loading="lazy" src={Women_athletic} alt=""/>
                             <p>WOMEN</p>
                             <h1 className="product_title">Athletic Shorts</h1>
                             <h3>$17.50</h3>
@@ -66,7 +66,7 @@ export default function Women(props) {
                     </Link>
                     <Link to="/Item" onClick={() => handleItemPreview("Lifestyle Shorts", [Women_lifestyle, Women_lifestyle2, Women_lifestyle3], 14.99, "WOMEN")}>
                         <div className="product">
-                            <img src={Women_lifestyle} alt=""/>
+                            <img loading="lazy" src={Women_lifestyle} alt=""/>
                             <p>WOMEN</p>
                             <h1 className="product_title">Lifestyle Shorts</h1>
                             <h3>$14.99</h3>
@@ -77,7 +77,7 @@ export default function Women(props) {
                 <div className="product_container" style={{marginBottom: "100px"}}>
                     <Link to="/Item" onClick={() => handleItemPreview("Classic Leggings", [Women_classic, Women_classic2, Women_classic3], 14.99, "WOMEN")}>
                         <div className="product">
-                            <img src={Women_classic} alt=""/>
+                            <img loading="lazy" src={Women_classic} alt=""/>
                             <p>WOMEN</p>
                             <h1 className="product_title">Classic Leggings</h1>
                             <h3>$17.50</h3>
@@ -85,7 +85,7 @@ export default function Women(props) {
                     </Link>
                     <Link to="/Item" onClick={() => handleItemPreview("Eclipse1 Leggings", [Women_eclipse, Women_eclipse2, Women_eclipse3], 14.99, "WOMEN")}>
                         <div className="product">
-                            <img src={Women_eclipse} alt=""/>
+                            <img loading="lazy" src={Women_eclipse} alt=""/>
                             <p>WOMEN</p>
                             <h1 className="product_title">Eclipse1 Leggings</h1>
                             <h3>$19.99</h3>

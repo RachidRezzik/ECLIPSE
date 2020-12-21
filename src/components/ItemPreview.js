@@ -52,13 +52,13 @@ export default function ItemPreview(props) {
                 <div className="item_preview_container">
                     <div className="item_images">
                         <div style={{position: "relative"}}>
-                            <img className="featured_image" src={props.featuredImage} alt="" />
-                            <img src={expand} id="expand" onClick={handleModalClick}/>
+                            <img loading="lazy" className="featured_image" src={props.featuredImage} alt="" />
+                            <img loading="lazy" src={expand} id="expand" onClick={handleModalClick}/>
                         </div>
                         <div className="item_photos">
-                            <img src={props.featuredProduct.imageArray[0]} alt="" onClick={() => handleFeaturedImage(props.featuredProduct.imageArray[0])}/>
-                            <img src={props.featuredProduct.imageArray[1]} alt="" onClick={() => handleFeaturedImage(props.featuredProduct.imageArray[1])}/>
-                            <img src={props.featuredProduct.imageArray[2]} alt="" onClick={() => handleFeaturedImage(props.featuredProduct.imageArray[2])}/> 
+                            <img loading="lazy" src={props.featuredProduct.imageArray[0]} alt="" onClick={() => handleFeaturedImage(props.featuredProduct.imageArray[0])}/>
+                            <img loading="lazy" src={props.featuredProduct.imageArray[1]} alt="" onClick={() => handleFeaturedImage(props.featuredProduct.imageArray[1])}/>
+                            <img loading="lazy" src={props.featuredProduct.imageArray[2]} alt="" onClick={() => handleFeaturedImage(props.featuredProduct.imageArray[2])}/> 
                         </div>
                     </div>
                     <div className="item_options">
@@ -76,7 +76,7 @@ export default function ItemPreview(props) {
                 <div className="related_products_container">
                     <h2 style={{textAlign: "center"}}>Related ECLIPSE Products</h2>
                     <div className="related_product" onClick={() => handleItemPreview2(props.relatedProducts[0].itemTitle, props.relatedProducts[0].itemImages, props.relatedProducts[0].itemPrice, props.relatedProducts[0].category)}>
-                        <img src={props.relatedProducts[0].itemImages[0]} alt=""/>
+                        <img loading="lazy" src={props.relatedProducts[0].itemImages[0]} alt=""/>
                         <div className="related_description">
                             <p>{props.relatedProducts[0].category}</p>
                             <h4>{props.relatedProducts[0].itemTitle}</h4>
@@ -84,7 +84,7 @@ export default function ItemPreview(props) {
                         </div>
                     </div>
                     <div className="related_product" onClick={() => handleItemPreview2(props.relatedProducts[1].itemTitle, props.relatedProducts[1].itemImages, props.relatedProducts[1].itemPrice, props.relatedProducts[1].category)}>
-                        <img src={props.relatedProducts[1].itemImages[0]} alt=""/>
+                        <img loading="lazy" src={props.relatedProducts[1].itemImages[0]} alt=""/>
                         <div className="related_description">
                             <p>{props.relatedProducts[1].category}</p>
                             <h4>{props.relatedProducts[1].itemTitle}</h4>
@@ -92,7 +92,7 @@ export default function ItemPreview(props) {
                         </div>
                     </div>
                     <div className="related_product" onClick={() => handleItemPreview2(props.relatedProducts[2].itemTitle, props.relatedProducts[2].itemImages, props.relatedProducts[2].itemPrice, props.relatedProducts[2].category)}>
-                        <img src={props.relatedProducts[2].itemImages[0]} alt=""/>
+                        <img loading="lazy" src={props.relatedProducts[2].itemImages[0]} alt=""/>
                         <div className="related_description">
                             <p>{props.relatedProducts[2].category}</p>
                             <h4>{props.relatedProducts[2].itemTitle}</h4>
