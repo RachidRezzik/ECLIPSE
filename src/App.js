@@ -1,17 +1,31 @@
 import './App.css';
 import {HashRouter, Switch, Route} from "react-router-dom"
-import React, {useState} from 'react'
-//Components
-import Navigation from './components/Navigation'
-import Home from './components/Home'
-import Footer from './components/Footer'
-import Men from './components/Men';
-import Women from './components/Women'
-import Cart from './components/Bag'
-import ItemPreview from './components/ItemPreview'
+import React, {useState, Suspense, lazy} from 'react'
+
 //IMPORT Related Products Info
 import {Men_Products} from './components/MenData'
 import { Women_Products } from './components/WomenData';
+
+
+//Components
+const Home = lazy(() => import('./components/Home'))
+const Navigation = lazy(() => import('./components/Navigation'))
+const Footer = lazy(() => import('./components/Footer'))
+const Men = lazy(() => import('./components/Men'))
+const Women = lazy(() => import('./components/Women'))
+const Bag = lazy(() => import('./components/Bag'))
+const ItemPreview = lazy(() => import('./components/ItemPreview'))
+
+// import Navigation from './components/Navigation'
+// import Home from './components/Home'
+// import Footer from './components/Footer'
+// import Men from './components/Men';
+// import Women from './components/Women'
+// import Bag from './components/Bag'
+// import ItemPreview from './components/ItemPreview'
+//IMPORT Related Products Info
+// import {Men_Products} from './components/MenData'
+// import { Women_Products } from './components/WomenData';
 
 function App() {
   //Setting Local Storage for Orders (Array of Order Objects)
@@ -257,41 +271,43 @@ function App() {
   return (
     <div className="App">
     <HashRouter basename="/">
-      <Navigation 
-      bagItems={bagItems}
-      searchOpen={searchOpen}
-      menuSlider={menuSlider}
-      X={X}
-      handleMenuSwitch={handleMenuSwitch}
-      handleMenuSlider={handleMenuSlider}
-      handleItemPreview={handleItemPreview}
-      handleSearch={handleSearch}
-      handleClickOutsideSearch={handleClickOutsideSearch}
-      handleSearchCloseDesktop={handleSearchCloseDesktop}
-      />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/MEN" render={() => <Men 
-        handleAddToBag={handleAddToBag}
-        handleItemPreview={handleItemPreview} />} />
-        <Route path="/WOMEN" render={() => <Women 
-        handleAddToBag={handleAddToBag}
-        handleItemPreview={handleItemPreview} />} />
-        <Route path="/Item" render={() => <ItemPreview 
-        featuredProduct={featuredProduct}
-        featuredImage={featuredImage}
-        relatedProducts={relatedProducts}
-        handleItemPreview={handleItemPreview}
-        handleFeaturedImage={handleFeaturedImage}
-        handleAddToBag={handleAddToBag} />} />
-        <Route path="/BAG" render={() => <Cart 
-        bagOrders={bagOrders}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Navigation 
         bagItems={bagItems}
-        handleRemoveFromBag={handleRemoveFromBag}
-        handleAddQuantity={handleAddQuantity}
-        handleSubtractQuantity={handleSubtractQuantity} />} />
-      </Switch>
-      <Footer />
+        searchOpen={searchOpen}
+        menuSlider={menuSlider}
+        X={X}
+        handleMenuSwitch={handleMenuSwitch}
+        handleMenuSlider={handleMenuSlider}
+        handleItemPreview={handleItemPreview}
+        handleSearch={handleSearch}
+        handleClickOutsideSearch={handleClickOutsideSearch}
+        handleSearchCloseDesktop={handleSearchCloseDesktop}
+        />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/MEN" render={() => <Men 
+          handleAddToBag={handleAddToBag}
+          handleItemPreview={handleItemPreview} />} />
+          <Route path="/WOMEN" render={() => <Women 
+          handleAddToBag={handleAddToBag}
+          handleItemPreview={handleItemPreview} />} />
+          <Route path="/Item" render={() => <ItemPreview 
+          featuredProduct={featuredProduct}
+          featuredImage={featuredImage}
+          relatedProducts={relatedProducts}
+          handleItemPreview={handleItemPreview}
+          handleFeaturedImage={handleFeaturedImage}
+          handleAddToBag={handleAddToBag} />} />
+          <Route path="/BAG" render={() => <Bag 
+          bagOrders={bagOrders}
+          bagItems={bagItems}
+          handleRemoveFromBag={handleRemoveFromBag}
+          handleAddQuantity={handleAddQuantity}
+          handleSubtractQuantity={handleSubtractQuantity} />} />
+        </Switch>
+        <Footer />
+      </Suspense>
     </HashRouter>
     </div>
   );
