@@ -18,22 +18,26 @@ import arrow from '../images/Arrow-icon.svg'
 export default function Navigation(props) {
     const [menuItemSelected, setMenuItemSelected] = useState("")
     const [isMobile, setIsMobile] = useState(useWindowSize().width <= 650 ? true : false)
+    const [menuOpen, setMenuOpen] = useState(false)
     const screenWidth = useWindowSize().width
 
     
+    const handleMenuSlider = (message) => {
+        props.handleMenuSlider(message)
+    }
+
     const handleResize = (width, isMobile) =>{
         if (width > 650 && isMobile == true){
             setIsMobile(false)
+            handleMenuSlider("mobile_transition")
         } else if (width <= 650 && isMobile == false){
             setIsMobile(true)
+            handleMenuSlider("mobile_transition")
         }
     }
 
     handleResize(useWindowSize().width, isMobile)
 
-    const handleMenuSlider = (message) => {
-        props.handleMenuSlider(message)
-    }
 
     const handleMenuClick = (menuItem) => {
         setMenuItemSelected(menuItem)
@@ -58,11 +62,7 @@ export default function Navigation(props) {
         }
     }
 
-    const handleMenuBlur2 = (menuID) => {
-        let subMenu = document.querySelector(menuID)
-        if (screenWidth > 650){
-            subMenu.style.display = "none"
-        }
+    const handleMenuBlur2 = () => {
         window.scrollTo({
             top: 0
         })
@@ -110,7 +110,7 @@ export default function Navigation(props) {
                 </div> : 
                 <div className="desktop_menu">
                     <div className="dropdown1" onMouseOver={() => handleMenuHover(".submenu1")} onMouseOut={() => handleMenuBlur(".submenu1")}>
-                        <Link className="MEN" to="/MEN" onClick={() => handleMenuBlur2(".submenu1")}>MEN</Link>
+                        <Link className="MEN" to="/MEN" onClick={handleMenuBlur2}>MEN</Link>
                         <div className="submenu1">
                             <Link to="/MEN#Shirts" onClick={() => handleSubMenuClick(".submenu1")}>SHIRTS</Link>
                             <Link to="/MEN#Shorts" onClick={() => handleSubMenuClick(".submenu1")}>SHORTS</Link>
@@ -118,7 +118,7 @@ export default function Navigation(props) {
                         </div>
                     </div>
                     <div className="dropdown2" onMouseOver={() => handleMenuHover(".submenu2")} onMouseOut={() => handleMenuBlur(".submenu2")}>
-                        <Link to="/WOMEN" onClick={() => handleMenuBlur2(".submenu2")}>WOMEN</Link>
+                        <Link to="/WOMEN" onClick={handleMenuBlur2}>WOMEN</Link>
                         <div className="submenu2">
                             <Link to="/WOMEN#Shirts" onClick={() => handleSubMenuClick(".submenu2")}>SHIRTS</Link>
                             <Link to="/WOMEN#Shorts" onClick={() => handleSubMenuClick(".submenu2")}>SHORTS</Link>

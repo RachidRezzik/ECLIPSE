@@ -1,31 +1,32 @@
 import './App.css';
 import {HashRouter, Switch, Route} from "react-router-dom"
-import React, {useState, Suspense, lazy} from 'react'
+import React, {useState} from 'react'
 
-//IMPORT Related Products Info
-import {Men_Products} from './components/MenData'
-import { Women_Products } from './components/WomenData';
-
-
-//Components
-const Home = lazy(() => import('./components/Home'))
-const Navigation = lazy(() => import('./components/Navigation'))
-const Footer = lazy(() => import('./components/Footer'))
-const Men = lazy(() => import('./components/Men'))
-const Women = lazy(() => import('./components/Women'))
-const Bag = lazy(() => import('./components/Bag'))
-const ItemPreview = lazy(() => import('./components/ItemPreview'))
-
-// import Navigation from './components/Navigation'
-// import Home from './components/Home'
-// import Footer from './components/Footer'
-// import Men from './components/Men';
-// import Women from './components/Women'
-// import Bag from './components/Bag'
-// import ItemPreview from './components/ItemPreview'
 //IMPORT Related Products Info
 // import {Men_Products} from './components/MenData'
 // import { Women_Products } from './components/WomenData';
+
+
+//Components
+// const Home = lazy(() => import('./components/Home'))
+// const Navigation = lazy(() => import('./components/Navigation'))
+// const Footer = lazy(() => import('./components/Footer'))
+// const Men = lazy(() => import('./components/Men'))
+// const Women = lazy(() => import('./components/Women'))
+// const Bag = lazy(() => import('./components/Bag'))
+// const ItemPreview = lazy(() => import('./components/ItemPreview'))
+
+import Navigation from './components/Navigation'
+import Home from './components/Home'
+import Footer from './components/Footer'
+import Men from './components/Men';
+import Women from './components/Women'
+import Bag from './components/Bag'
+import ItemPreview from './components/ItemPreview'
+
+// IMPORT Related Products Info
+import {Men_Products} from './components/MenData'
+import { Women_Products } from './components/WomenData';
 
 function App() {
   //Setting Local Storage for Orders (Array of Order Objects)
@@ -230,6 +231,8 @@ function App() {
           top: 0
         })
         setMenuSlider(false)
+    } else if (message == "mobile_transition"){
+      setMenuSlider(false)
     } else {
       setMenuSlider(!menuSlider)
     }
@@ -271,7 +274,7 @@ function App() {
   return (
     <div className="App">
     <HashRouter basename="/">
-      <Suspense fallback={<div>Loading...</div>}>
+      {/* <Suspense fallback={<div>Loading...</div>}> */}
         <Navigation 
         bagItems={bagItems}
         searchOpen={searchOpen}
@@ -307,7 +310,7 @@ function App() {
           handleSubtractQuantity={handleSubtractQuantity} />} />
         </Switch>
         <Footer />
-      </Suspense>
+      {/* </Suspense> */}
     </HashRouter>
     </div>
   );
